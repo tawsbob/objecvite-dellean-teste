@@ -1,8 +1,8 @@
 import './index.scss';
 
-function Card({ children, className }){
+function Card({ children, className, ...rest }){
     return (
-        <div className={`card-container ${className}`}>
+        <div className={`card-container ${className}`} {...rest}>
             { children }
         </div>
     )

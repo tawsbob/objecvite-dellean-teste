@@ -4,6 +4,7 @@ function RestCall({ url, params = {} }){
     return fetch(url, fetchParams).then(response => response.json())
 }
 
+export const getThumbPath = (h)=>(h.thumbnail.path +'.'+ h.thumbnail.extension)
 
 export class RestClient {
     
@@ -14,7 +15,9 @@ export class RestClient {
 
     buildUrlParams(obj = {}, url){
         return Object.keys(obj).reduce((acc, k)=>{
-            acc = `${acc}${ k }=${obj[k]}&`
+            if(obj[k]){
+                acc = `${acc}${ k }=${encodeURI(obj[k])}&`
+            }
             return acc
         }, url + '?')
     }
@@ -24,12 +27,17 @@ export class RestClient {
         return `${url}${path}apikey=${apiKey}`
     }
 
-    call(path, params){
+    call(path = '', params = {}){
         return RestCall({ url: this.buildUrl(path), params })
     }
 
-    getChars(urlParams, params){
+    getChars(urlParams = {}, params){
         const urlToCall = this.buildUrlParams(urlParams, '/v1/public/characters')
         return this.call(urlToCall, params)
+    }
+
+    getChat(id, urlParams = {}){
+        const urlToCall = this.buildUrlParams(urlParams, `/v1/public/characters/${id}`)
+        return this.call(urlToCall)
     }
 }

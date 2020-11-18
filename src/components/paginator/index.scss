@@ -1,0 +1,14 @@
+.paginator-container {
+    background-color: #fff;
+    padding: 50px;
+    margin-top:25px;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button {
+        margin:5px;
+    }
+}

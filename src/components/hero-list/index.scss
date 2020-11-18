@@ -1,4 +1,22 @@
 .hero-list-container {
+    margin-top:45px;
+    > .wrapper {
+        min-height: 570px;
+        .lds-ring {
+            position: absolute;
+            margin:auto;
+            top:0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+        }
+    }
+
+    .lds-ring {
+        display: block;
+        margin: 0 auto;
+    }
 
     .grid-label {
         margin:10px;
@@ -6,6 +24,7 @@
         @media only screen and(min-width: 768px){
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 20px;
         }
 
         
@@ -19,6 +38,7 @@
         @media only screen and(min-width: 768px){
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 20px;
         }
         margin-bottom: 5px;
         padding:22px;
@@ -33,6 +53,12 @@
             border-radius: 6px;
             margin-right: 25px;
         }
+
+        .hero-list span {
+            display: block;
+            font-size: 14px;
+        }
+        
     }
 }
 
