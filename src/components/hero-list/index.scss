@@ -1,0 +1,38 @@
+.hero-list-container {
+
+    .grid-label {
+        margin:10px;
+
+        @media only screen and(min-width: 768px){
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        
+       
+        small {
+            padding-left: 22px;
+        }
+    } 
+
+    .hero-card {
+        @media only screen and(min-width: 768px){
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        margin-bottom: 5px;
+        padding:22px;
+
+        .hero-avatar {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            max-width: 55px;
+            border-radius: 6px;
+            margin-right: 25px;
+        }
+    }
+}
+
