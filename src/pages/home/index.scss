@@ -1,0 +1,8 @@
+.home-page-container {
+    @media only screen and (max-width: 768px){
+        text-align: center;
+        .input-text-container {
+            margin:0 auto;
+        }
+    }
+}

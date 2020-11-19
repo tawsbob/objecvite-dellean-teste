@@ -34,7 +34,7 @@ function HeroList({ searchTerm }){
     const [ heros, setHeros ] = useState([])
     const [ pagination, setPagination ] = useState({ limit: 4  })
     const [ loading, setLoading ] = useState(false)
-
+    const [ error, setError ] = useState(false)
     
     function setPaginationState(props){
         const { limit } = pagination
@@ -63,18 +63,29 @@ function HeroList({ searchTerm }){
 
        MarvelRestClient
         .getChars(queryStringParams)
-        .then(({ data })=>{
-            console.log(data)
+        .then((response)=>{
             
-            const { offset, total } = data
-            setPaginationState({ offset, total })
-            setHeros(data.results)
-            setLoading(false)
+            const { data, code } = response
+
+            if(data){
+                const { offset, total } = data
+                setPaginationState({ offset, total })
+                setHeros(data.results)
+                setLoading(false)
+            } 
+
+            if(code){
+                alert(response.message)
+                setError(true)
+                setLoading(false)
+                
+            }
+           
         })
     }
 
     useEffect(()=>{
-        if(!heros.length && !loading){
+        if(!heros.length && !loading && !error){
             getHeroes()
         }
     })
@@ -86,6 +97,10 @@ function HeroList({ searchTerm }){
     return (
             <div className="hero-list-container">
                 <div className="wrapper">
+
+                    {
+                        error && (<h2>Não foi possível carregar os personagens  :(</h2>)
+                    }
                     {
                         hasHeros && (
                         <div className="grid-label">

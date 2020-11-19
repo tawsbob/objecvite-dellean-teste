@@ -1,7 +1,10 @@
 .hero-list-container {
     margin-top:45px;
     > .wrapper {
-        min-height: 570px;
+        @media only screen and (min-width: 768px){
+            min-height: 570px;
+        }
+        
         .lds-ring {
             position: absolute;
             margin:auto;

@@ -6,6 +6,11 @@ import { getThumbPath } from '../../helpers';
 import './index.scss';
 
 
+function renderDescription( description ){
+    return description || 'Sem descrição'
+}
+
+
 function Hero(){
 
     let { id } = useParams();
@@ -32,6 +37,7 @@ function Hero(){
                 { hero && (
                     <div className="wrapper">
                         <h1>{ hero.name }</h1>
+                        <p>{ renderDescription(hero.description) }</p>
                     </div>
                 ) }
             </section>

@@ -3,7 +3,7 @@ import './index.scss';
 
 function Template({ children, backgroundImage }){
     return (
-        <div className="template-container" style={{ backgroundImageUrl: `url(${backgroundImage})` }}>
+        <div className="template-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <Header />
             { children }
         </div>
